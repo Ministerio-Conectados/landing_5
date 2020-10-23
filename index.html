@@ -15,10 +15,8 @@
     <!-- Mobile Specific Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSS
-		================================================== -->
+    <link rel="icon" href="img/favicon.ico" type="image/png" />
 
-    <!--link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'-->
     <script src="https://kit.fontawesome.com/fe9483bdc7.js" crossorigin="anonymous"></script>
 
     <!-- bootstrap.min -->
@@ -49,9 +47,7 @@
         </div>
     </div>
     <!-- end preloader -->
-    <!--
-        Fixed Navigation
-        ==================================== -->
+    <!-- Fixed Navigation -->
     <header id="navigation" class="navbar-inverse navbar-fixed-top animated-header">
         <div class="container">
             <div class="navbar-header">
@@ -66,19 +62,19 @@
 
                 <!-- logo -->
                 <h1 class="navbar-brand">
-                    <a href="#body">Jovenes Valientes Conectados</a>
+                    <a href="#body"><img src="img/logo.png" alt="Jovenes Valientes Conectados" style="width: 100px; margin-top: -20px;"></a>
                 </h1>
                 <!-- /logo -->
             </div>
 
             <!-- main nav -->
-            <nav class="collapse navbar-collapse navbar-right" role="navigation">
+            <nav id="editnav" class="collapse navbar-collapse navbar-right" role="navigation">
                 <ul id="nav" class="nav navbar-nav">
                     <li><a href="#body">Home</a></li>
                     <li><a href="#service">Service</a></li>
                     <li><a href="#portfolio">portfolio</a></li>
-                    <li><a href="#testimonials">Testimonial</a></li>
-                    <li><a href="#resources">Recursos</a></li>
+                    <li><a href="#social">Follow US</a></li>
+                    <li><a href="#resources">Resources</a></li>
                 </ul>
             </nav>
             <!-- /main nav -->
@@ -389,49 +385,6 @@
         </section>
         <!-- end portfolio section -->
 
-        <!-- Testimonial section 
-        <section id="testimonials" class="parallax">
-            <div class="overlay">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="sec-title text-center white wow animated fadeInDown">
-                            <h2>What people say</h2>
-                        </div>
-
-                        <div id="testimonial" class=" wow animated fadeInUp">
-                            <div class="testimonial-item text-center">
-                                <img src="img/member-1.jpg" alt="Our Clients">
-                                <div class="clearfix">
-                                    <span>Katty Flower</span>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                                </div>
-                            </div>
-                            <div class="testimonial-item text-center">
-                                <img src="img/member-1.jpg" alt="Our Clients">
-                                <div class="clearfix">
-                                    <span>Katty Flower</span>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                                </div>
-                            </div>
-                            <div class="testimonial-item text-center">
-                                <img src="img/member-1.jpg" alt="Our Clients">
-                                <div class="clearfix">
-                                    <span>Katty Flower</span>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </section>-->
-        <!-- end Testimonial section -->
-
         <!-- Social section -->
         <section id="social" class="parallax">
             <div class="overlay">
@@ -467,17 +420,19 @@
                 <div class="row">
 
                     <div class="sec-title text-center">
-                        <h2 class="wow animated bounceInLeft">RECURSOS</h2>
+                        <h2 class="wow animated bounceInLeft">Resources</h2>
                         <p class="wow animated bounceInRight">Aquí tienes nuestros recursos</p>
                     </div>
 
                     <div class="col-md-3 col-sm-6 col-xs-12 text-center wow animated zoomIn">
                         <div class="service-item">
                             <div class="service-icon">
-                                <a href="#"> <i class="fa fa-home fa-3x"></i></a>
+                                <i class="fa fa-home fa-3x"></i>
                             </div>
                             <h3>Support</h3>
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                            <a type="button" href="#">SEE MORE</a>
+
                         </div>
                     </div>
 
@@ -488,6 +443,8 @@
                             </div>
                             <h3>Well Documented</h3>
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                            <a type="button" href="#">SEE MORE</a>
+
                         </div>
                     </div>
 
@@ -498,6 +455,8 @@
                             </div>
                             <h3>Design UI/UX</h3>
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                            <a type="button" href="#">SEE MORE</a>
+
                         </div>
                     </div>
 
@@ -506,58 +465,16 @@
                             <div class="service-icon">
                                 <i class="fa fa-heart fa-3x"></i>
                             </div>
-
                             <h3>Web Security</h3>
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                            <a type="button" id="seemore" class="seemore" href="#">SEE MORE</a>
+
                         </div>
                     </div>
 
                 </div>
             </div>
         </section>
-
-        <!-- Contact section -->
-        <!--section id="contact">
-            <div class="container">
-                <div class="row">
-
-                    <div class="sec-title text-center wow animated fadeInDown">
-                        <h2>Contact</h2>
-                        <p>Leave a Message</p>
-                    </div>
-
-
-                    <div class="col-md-7 contact-form wow animated fadeInLeft">
-                        <form action="#" method="post">
-                            <div class="input-field">
-                                <input type="text" name="name" class="form-control" placeholder="Your Name...">
-                            </div>
-                            <div class="input-field">
-                                <input type="email" name="email" class="form-control" placeholder="Your Email...">
-                            </div>
-                            <div class="input-field">
-                                <input type="text" name="subject" class="form-control" placeholder="Subject...">
-                            </div>
-                            <div class="input-field">
-                                <textarea name="message" class="form-control" placeholder="Messages..."></textarea>
-                            </div>
-                            <button type="submit" id="submit" class="btn btn-blue btn-effect">Send</button>
-                        </form>
-                    </div>
-
-                    <div class="col-md-5 wow animated fadeInRight">
-                        <address class="contact-details">
-								<h3>Contact Us</h3>						
-								<p><i class="fa fa-pencil"></i>Phoenix Inc.<span>PO Box 345678</span> <span>Little Lonsdale St, Melbourne </span><span>Australia</span></p><br>
-								<p><i class="fa fa-phone"></i>Phone: (415) 124-5678 </p>
-								<p><i class="fa fa-envelope"></i>website@yourname.com</p>
-							</address>
-                    </div>
-
-                </div>
-            </div>
-        </section-->
-        <!-- end Contact section -->
 
     </main>
 
