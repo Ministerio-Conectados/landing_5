@@ -1,0 +1,16 @@
+ ============ JVC PAGINA WEB  =============
+
+ >> NAVBAR
+	> HOME
+	> ABOUT US
+	> PORTAFOLIO
+	> FOLLOW US
+	> RESOURCES
+	> MORE
+
+
+ >> RESOURCES
+	> DESINGS
+	> DOCUMENTS
+	> CALENDAR
+	> MORE PHOTOS

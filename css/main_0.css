@@ -1,0 +1,10 @@
+body {
+    background-color: #fff;
+    line-height: 24px;
+    font-size: 16px;
+    color: #818181;
+}
+
+.gradient {
+    background: linear-gradient(90deg, #d53333 0%, #daae51 100%);
+}
