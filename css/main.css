@@ -1,6 +1,6 @@
 body {
     background-color: #fff;
-    /* font-family: 'Open Sans', sans-serif; */
+    font-family: 'Open Sans', sans-serif;
     line-height: 24px;
     font-size: 16px;
     color: #818181;
@@ -8,20 +8,6 @@ body {
 
 iframe {
     border: 0;
-}
-
-#imglogo {
-    opacity: 0.9;
-}
-
-.headersvg {
-    background-image: url('../img/parallax/jvc_home.png');
-    background-repeat: repeat;
-    background-attachment: scroll;
-}
-
-.gradient {
-    background: linear-gradient(90deg, #d53333 0%, #daae51 100%);
 }
 
 a,
@@ -36,13 +22,43 @@ main>section {
     padding: 70px 0;
 }
 
+.gradient {
+    background: linear-gradient(90deg, #ffb545 0%, #e1821d 100%);
+}
+
+
+/* 
+=============== PRINCIPAL - HOME ================
+*/
+
+#imglogo {
+    opacity: 0.0001;
+}
+
+#headersvg {
+    background-image: url('../img/fondos/jvc_home.png');
+    background-repeat: repeat;
+    background-attachment: scroll;
+}
+
+#headersvg .principal-overlay {
+    background: url('../img/fondos/jvc.png') repeat local 0 0 transparent;
+    background-size: auto;
+}
+
+#mensa {
+    padding: 5%;
+    color: white;
+    border-radius: 15px;
+}
+
+.seemore-home {
+    color: white;
+}
+
 .navbar-brand img {
     width: 100px;
     margin-top: -20px;
-}
-
-#editnav {
-    /* background-color: red; */
 }
 
 .seemore {

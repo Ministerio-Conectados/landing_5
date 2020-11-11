@@ -2,10 +2,98 @@
 /*	Preloader
 /* ========================================================================= */
 
-jQuery(window).load(function(){
+jQuery(window).load(function() {
 
-	$("#preloader").fadeOut("slow");
+    $("#preloader").fadeOut("slow");
 
+});
+
+/* ========================================================================= */
+/*  PRINCIPAL
+/* ========================================================================= */
+var words = document.getElementsByClassName('word');
+var wordArray = [];
+var currentWord = 0;
+
+words[currentWord].style.opacity = 1;
+for (var i = 0; i < words.length; i++) {
+    splitLetters(words[i]);
+}
+
+function changeWord() {
+    var cw = wordArray[currentWord];
+    var nw = currentWord == words.length - 1 ? wordArray[0] : wordArray[currentWord + 1];
+    for (var i = 0; i < cw.length; i++) {
+        animateLetterOut(cw, i);
+    }
+
+    for (var i = 0; i < nw.length; i++) {
+        nw[i].className = 'letter behind';
+        nw[0].parentElement.style.opacity = 1;
+        animateLetterIn(nw, i);
+    }
+
+    currentWord = (currentWord == wordArray.length - 1) ? 0 : currentWord + 1;
+}
+
+function animateLetterOut(cw, i) {
+    setTimeout(function() {
+        cw[i].className = 'letter out';
+    }, i * 80);
+}
+
+function animateLetterIn(nw, i) {
+    setTimeout(function() {
+        nw[i].className = 'letter in';
+    }, 340 + (i * 80));
+}
+
+function splitLetters(word) {
+    var content = word.innerHTML;
+    word.innerHTML = '';
+    var letters = [];
+    for (var i = 0; i < content.length; i++) {
+        var letter = document.createElement('span');
+        letter.className = 'letter';
+        letter.innerHTML = content.charAt(i);
+        word.appendChild(letter);
+        letters.push(letter);
+    }
+
+    wordArray.push(letters);
+}
+
+changeWord();
+setInterval(changeWord, 4000);
+
+/* ========================================================================= */
+/*  EMAIL JS
+/* ========================================================================= */
+(function() {
+    emailjs.init("user_eFz0jYtiptIk2vHOEyRrh");
+})();
+const vue = new Vue({
+    el: '#app',
+    data() {
+        return {
+            from_email: '',
+        }
+    },
+    methods: {
+        enviar() {
+            let data = {
+                from_email: this.from_email,
+            };
+            emailjs.send("service_cgwzbox", "template_5q5tlvi", data)
+                .then(function(response) {
+                    if (response.text === 'OK') {
+                        alert('El correo se ha enviado de forma exitosa');
+                    }
+                }, function(err) {
+                    alert('Ocurrió un problema al enviar el correo');
+                });
+        }
+    }
 });
 
 /* ========================================================================= */
@@ -16,62 +104,62 @@ $(function() {
 
     var Page = (function() {
 
-        var $navArrows = $( '#nav-arrows' ),
-            $nav = $( '#nav-dots > span' ),
-            slitslider = $( '#slider' ).slitslider( {
-                onBeforeChange : function( slide, pos ) {
+        var $navArrows = $('#nav-arrows'),
+            $nav = $('#nav-dots > span'),
+            slitslider = $('#slider').slitslider({
+                onBeforeChange: function(slide, pos) {
 
-                    $nav.removeClass( 'nav-dot-current' );
-                    $nav.eq( pos ).addClass( 'nav-dot-current' );
+                    $nav.removeClass('nav-dot-current');
+                    $nav.eq(pos).addClass('nav-dot-current');
 
                 }
-            } ),
+            }),
 
             init = function() {
 
                 initEvents();
-                
+
             },
             initEvents = function() {
 
                 // add navigation events
-                $navArrows.children( ':last' ).on( 'click', function() {
+                $navArrows.children(':last').on('click', function() {
 
                     slitslider.next();
                     return false;
 
-                } );
+                });
 
-                $navArrows.children( ':first' ).on( 'click', function() {
-                    
+                $navArrows.children(':first').on('click', function() {
+
                     slitslider.previous();
                     return false;
 
-                } );
+                });
 
-                $nav.each( function( i ) {
-                
-                    $( this ).on( 'click', function( event ) {
-                        
-                        var $dot = $( this );
-                        
-                        if( !slitslider.isActive() ) {
+                $nav.each(function(i) {
 
-                            $nav.removeClass( 'nav-dot-current' );
-                            $dot.addClass( 'nav-dot-current' );
-                        
+                    $(this).on('click', function(event) {
+
+                        var $dot = $(this);
+
+                        if (!slitslider.isActive()) {
+
+                            $nav.removeClass('nav-dot-current');
+                            $dot.addClass('nav-dot-current');
+
                         }
-                        
-                        slitslider.jump( i + 1 );
+
+                        slitslider.jump(i + 1);
                         return false;
-                    
-                    } );
-                    
-                } );
+
+                    });
+
+                });
 
             };
 
-            return { init : init };
+        return { init: init };
 
     })();
 
@@ -81,189 +169,93 @@ $(function() {
 
 
 
-$(document).ready(function(){
+$(document).ready(function() {
 
-	/* ========================================================================= */
-	/*	Menu item highlighting
-	/* ========================================================================= */
+    /* ========================================================================= */
+    /*	Menu item highlighting
+    /* ========================================================================= */
 
-	jQuery('#nav').singlePageNav({
-		offset: jQuery('#nav').outerHeight(),
-		filter: ':not(.external)',
-		speed: 2000,
-		currentClass: 'current',
-		easing: 'easeInOutExpo',
-		updateHash: true,
-		beforeStart: function() {
-			console.log('begin scrolling');
-		},
-		onComplete: function() {
-			console.log('done scrolling');
-		}
-	});
-	
-    $(window).scroll(function () {
+    jQuery('#nav').singlePageNav({
+        offset: jQuery('#nav').outerHeight(),
+        filter: ':not(.external)',
+        speed: 2000,
+        currentClass: 'current',
+        easing: 'easeInOutExpo',
+        updateHash: true,
+        beforeStart: function() {
+            console.log('begin scrolling');
+        },
+        onComplete: function() {
+            console.log('done scrolling');
+        }
+    });
+
+    $(window).scroll(function() {
         if ($(window).scrollTop() > 400) {
-            $(".navbar-brand a").css("color","#fff");
+            $(".navbar-brand a").css("color", "#fff");
             $("#navigation").removeClass("animated-header");
         } else {
-            $(".navbar-brand a").css("color","inherit");
+            $(".navbar-brand a").css("color", "inherit");
             $("#navigation").addClass("animated-header");
         }
     });
-	
-	/* ========================================================================= */
-	/*	Fix Slider Height
-	/* ========================================================================= */	
+
+    /* ========================================================================= */
+    /*	Fix Slider Height
+    /* ========================================================================= */
 
     // Slider Height
     var slideHeight = $(window).height();
-    
-    $('#home-slider, #slider, .sl-slider, .sl-content-wrapper').css('height',slideHeight);
 
-    $(window).resize(function(){'use strict',
-        $('#home-slider, #slider, .sl-slider, .sl-content-wrapper').css('height',slideHeight);
+    $('#home-slider, #slider, .sl-slider, .sl-content-wrapper').css('height', slideHeight);
+
+    $(window).resize(function() {
+        'use strict',
+        $('#home-slider, #slider, .sl-slider, .sl-content-wrapper').css('height', slideHeight);
     });
-	
-	
-	
-	$("#works, #testimonial").owlCarousel({	 
-		navigation : true,
-		pagination : false,
-		slideSpeed : 700,
-		paginationSpeed : 400,
-		singleItem:true,
-		navigationText: ["<i class='fa fa-angle-left fa-lg'></i>","<i class='fa fa-angle-right fa-lg'></i>"]
-	});
-	
-	
-	/* ========================================================================= */
-	/*	Featured Project Lightbox
-	/* ========================================================================= */
-
-	$(".fancybox").fancybox({
-		padding: 0,
-
-		openEffect : 'elastic',
-		openSpeed  : 650,
-
-		closeEffect : 'elastic',
-		closeSpeed  : 550,
-
-		closeClick : true,
-			
-		beforeShow: function () {
-			this.title = $(this.element).attr('title');
-			this.title = '<h3>' + this.title + '</h3>' + '<p>' + $(this.element).parents('.portfolio-item').find('img').attr('alt') + '</p>';
-		},
-		
-		helpers : {
-			title : { 
-				type: 'inside' 
-			},
-			overlay : {
-				css : {
-					'background' : 'rgba(0,0,0,0.8)'
-				}
-			}
-		}
-	});
-	
-});
 
 
-/* ==========  START GOOGLE MAP ========== */
 
-// When the window has finished loading create our google map below
-google.maps.event.addDomListener(window, 'load', init);
-
-function init() {
-    // Basic options for a simple Google Map
-    // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-
-	    var myLatLng = new google.maps.LatLng(22.402789, 91.822156);
-
-	    var mapOptions = {
-	        zoom: 15,
-	        center: myLatLng,
-	        disableDefaultUI: true,
-	        scrollwheel: false,
-	        navigationControl: true,
-	        mapTypeControl: false,
-	        scaleControl: false,
-	        draggable: true,
-
-        // How you would like to style the map. 
-        // This is where you would paste any style found on Snazzy Maps.
-        styles: [{
-            featureType: 'water',
-            stylers: [{
-                color: '#46bcec'
-            }, {
-                visibility: 'on'
-            }]
-        }, {
-            featureType: 'landscape',
-            stylers: [{
-                color: '#f2f2f2'
-            }]
-        }, {
-            featureType: 'road',
-            stylers: [{
-                saturation: -100
-            }, {
-                lightness: 45
-            }]
-        }, {
-            featureType: 'road.highway',
-            stylers: [{
-                visibility: 'simplified'
-            }]
-        }, {
-            featureType: 'road.arterial',
-            elementType: 'labels.icon',
-            stylers: [{
-                visibility: 'off'
-            }]
-        }, {
-            featureType: 'administrative',
-            elementType: 'labels.text.fill',
-            stylers: [{
-                color: '#444444'
-            }]
-        }, {
-            featureType: 'transit',
-            stylers: [{
-                visibility: 'off'
-            }]
-        }, {
-            featureType: 'poi',
-            stylers: [{
-                visibility: 'off'
-            }]
-        }]
-    };
-
-    // Get the HTML DOM element that will contain your map 
-    // We are using a div with id="map" seen below in the <body>
-    var mapElement = document.getElementById('map-canvas');
-
-    // Create the Google Map using our element and options defined above
-    var map = new google.maps.Map(mapElement, mapOptions);
-
-    // Let's also add a marker while we're at it
-    var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(22.402789, 91.822156),
-        map: map,
-		icon: 'img/icons/map-marker.png',
+    $("#works, #testimonial").owlCarousel({
+        navigation: true,
+        pagination: false,
+        slideSpeed: 700,
+        paginationSpeed: 400,
+        singleItem: true,
+        navigationText: ["<i class='fa fa-angle-left fa-lg'></i>", "<i class='fa fa-angle-right fa-lg'></i>"]
     });
-}
 
-// ========== END GOOGLE MAP ========== //
 
-var wow = new WOW ({
-	offset:       75,          // distance to the element when triggering the animation (default is 0)
-	mobile:       false,       // trigger animations on mobile devices (default is true)
+    /* ========================================================================= */
+    /*	Featured Project Lightbox
+    /* ========================================================================= */
+
+    $(".fancybox").fancybox({
+        padding: 0,
+
+        openEffect: 'elastic',
+        openSpeed: 650,
+
+        closeEffect: 'elastic',
+        closeSpeed: 550,
+
+        closeClick: true,
+
+        beforeShow: function() {
+            this.title = $(this.element).attr('title');
+            this.title = '<h3>' + this.title + '</h3>' + '<p>' + $(this.element).parents('.portfolio-item').find('img').attr('alt') + '</p>';
+        },
+
+        helpers: {
+            title: {
+                type: 'inside'
+            },
+            overlay: {
+                css: {
+                    'background': 'rgba(0,0,0,0.8)'
+                }
+            }
+        }
+    });
+
 });
-wow.init();
-
